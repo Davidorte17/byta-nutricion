@@ -1,5 +1,28 @@
 # BytaNutricion
 
+## ENUNCIADO Práctica: BYTA Nutrición
+
+Crear una mini-aplicación de seguimiento nutricional, con backend simulado mediante json-server, aplicando todo lo visto en el curso hasta ahora.
+
+### Entidades (db.json):
+
+users: id, name, email, password, dailyCalorieGoal
+foods: id, name, category, calories, protein, carbs, fat
+meals: id, userId, date, type (breakfast/lunch/dinner/snack), foodIds
+
+### Funcionalidades:
+
+Autenticación (Guards): login contra json-server (sin contraseñas cifradas, es una práctica). Ruta /perfil protegida con CanActivate. Navbar mostrando estado de sesión.
+Catálogo de alimentos: tabla con filtro por nombre y por categoría (Signals + computed(), como ya hiciste con usuarios). Detalle de cada alimento en su propia ruta.
+Registro de comidas: formulario para añadir una comida (fecha, tipo, alimentos), guardado real vía POST a json-server.
+Resumen diario: computed() que sume calorías/macros de las comidas del día, comparado con el objetivo (dailyCalorieGoal) del usuario.
+Estilo: Angular Material en formularios, tablas y tarjetas de resumen.
+Idioma: selector ES/EN con ngx-translate para textos fijos (categorías, etiquetas de la UI) — no para los datos de la API.
+
+Extra (cuando lleguéis a esos temas): interceptor que loguee todas las peticiones a json-server en consola; pipe personalizado kcal para formatear calorías.
+
+#### =============================
+
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.27.
 
 ## Development server
