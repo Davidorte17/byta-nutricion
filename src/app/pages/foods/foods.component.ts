@@ -12,11 +12,12 @@ import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { ResaltarDirective } from '../../directivas/resaltar.directive';
 
 @Component({
   selector: 'app-foods',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterLink, MatFormFieldModule,MatInputModule, MatSelectModule, MatCardModule, MatTableModule, MatChipsModule, MatProgressSpinnerModule],
+  imports: [CommonModule, FormsModule, RouterLink, MatFormFieldModule,MatInputModule, MatSelectModule, MatCardModule, MatTableModule, MatChipsModule, MatProgressSpinnerModule, ResaltarDirective],
   templateUrl: './foods.component.html',
   styleUrl: './foods.component.scss'
 })

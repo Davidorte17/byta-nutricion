@@ -1,0 +1,31 @@
+@if (food(); as f) {
+  <mat-card class="detail-card">
+    <div class="header">
+      <div>
+        <h1>{{ f.name }}</h1>
+        <mat-chip-set>
+          <mat-chip>{{ f.category }}</mat-chip>
+        </mat-chip-set>
+      </div>
+
+      <div class="kcal">
+        <span class="kcal-number">{{ f.calories }}</span>
+        <span class="kcal-unit">kcal / 100 g</span>
+      </div>
+    </div>
+
+    <h2>Macronutrientes</h2>
+
+    @for (m of macros(); track m.nombre) {
+      <div class="macro">
+        <div class="macro-label">
+          <span>{{ m.nombre }}</span>
+          <span>{{ m.gramos }} g · {{ m.porcentaje }}%</span>
+        </div>
+        <mat-progress-bar mode="determinate" [value]="m.porcentaje"></mat-progress-bar>
+      </div>
+    }
+
+    <a mat-button routerLink="/foods">← Volver al catálogo</a>
+  </mat-card>
+}

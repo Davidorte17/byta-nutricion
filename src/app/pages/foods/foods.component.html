@@ -58,7 +58,7 @@
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="columnas"></tr>
-      <tr mat-row *matRowDef="let row; columns: columnas"></tr>
+      <tr mat-row *matRowDef="let row; columns: columnas" [routerLink]="['/foods', row.id]" appResaltar></tr>
     </table>
 
     @if (alimentosFiltrados().length === 0) {
