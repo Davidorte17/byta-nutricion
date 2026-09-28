@@ -1,0 +1,32 @@
+.meals-card {
+  max-width: 700px;
+  margin: 24px auto;
+  padding: 24px 32px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.vacio {
+  text-align: center;
+  color: #777;
+}
+
+.kcal-linea {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.kcal-numero {
+  font-size: 2.2rem;
+  font-weight: 700;
+}
+
+.aviso {
+  color: #d32f2f;
+}

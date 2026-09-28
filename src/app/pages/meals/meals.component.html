@@ -1,0 +1,81 @@
+<h1>MIS COMIDAS</h1>
+
+    <mat-card class="meals-card">
+        <h2>Resumen del día</h2>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Fecha</mat-label>
+            <input matInput type="date" [(ngModel)]="fechaResumen" />
+        </mat-form-field>
+
+        @if (resumenDiario(); as r) {
+        <div class="kcal-linea">
+            <span class="kcal-numero">{{ r.calorias }}</span>
+            <span>/ {{ r.objetivo }} kcal</span>
+        </div>
+
+        <mat-progress-bar mode="determinate" [value]="r.barra"
+            [color]="r.excedido ? 'warn' : 'primary'"></mat-progress-bar>
+
+        @if (r.comidas === 0) {
+        <p class="vacio">No hay comidas registradas en esta fecha.</p>
+        } @else if (r.excedido) {
+        <p class="aviso">Te has pasado {{ -r.restantes }} kcal del objetivo.</p>
+        } @else {
+        <p>Te quedan {{ r.restantes }} kcal.</p>
+        }
+
+        <p>Proteína {{ r.proteina }} g · Carbohidratos {{ r.carbs }} g · Grasa {{ r.grasa }} g</p>
+        }
+    </mat-card>
+
+
+<mat-card class="meals-card">
+    <h1>Registrar comida</h1>
+
+    <form [formGroup]="form" #formDir="ngForm" (ngSubmit)="guardar(formDir)">
+        <mat-form-field appearance="outline">
+            <mat-label>Fecha</mat-label>
+            <input matInput type="date" formControlName="date" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Tipo de comida</mat-label>
+            <mat-select formControlName="type">
+                @for (t of tipos; track t.valor) {
+                <mat-option [value]="t.valor">{{ t.etiqueta }}</mat-option>
+                }
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Alimentos</mat-label>
+            <mat-select formControlName="foodIds" multiple>
+                @for (f of foods(); track f.id) {
+                <mat-option [value]="f.id">{{ f.name }}</mat-option>
+                }
+            </mat-select>
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">
+            Guardar comida
+        </button>
+    </form>
+</mat-card>
+
+<mat-card class="meals-card">
+    <h2>Mis comidas</h2>
+
+    @if (comidasConNombres().length === 0) {
+    <p class="vacio">Todavía no has registrado ninguna comida.</p>
+    } @else {
+    <mat-list>
+        @for (m of comidasConNombres(); track m.id) {
+        <mat-list-item>
+            <span matListItemTitle>{{ etiquetaTipo(m.type) }} · {{ m.date | date:'dd/MM/yyyy' }}</span>
+            <span matListItemLine>{{ m.alimentos }}</span>
+        </mat-list-item>
+        }
+    </mat-list>
+    }
+</mat-card>

@@ -6,11 +6,14 @@ import { HomeComponent } from './pages/home/home.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { FoodsComponent } from './pages/foods/foods.component';
 import { FoodDetailComponent } from './pages/food-detail/food-detail.component';
+import { MealsComponent } from './pages/meals/meals.component';
 
 export const routes: Routes = [
     { path: "", component: HomeComponent },
     { path: "login", component: LoginComponent },
     { path: "perfil", component: ProfileComponent, canActivate: [authGuard]  },
     { path: "foods", component: FoodsComponent },
-    { path: "foods/:id", component: FoodDetailComponent }
+    { path: "foods/:id", component: FoodDetailComponent },
+    { path: "meals", component: MealsComponent, canActivate: [authGuard]}
+
 ];
