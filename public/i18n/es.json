@@ -1,0 +1,10 @@
+{
+  "NAV": {
+    "HOME": "Inicio",
+    "FOODS": "Alimentos",
+    "MEALS": "Mis comidas",
+    "LOGIN": "Iniciar sesión",
+    "LOGOUT": "Cerrar sesión",
+    "GREETING": "Hola, {{name}}"
+  }
+}

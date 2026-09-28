@@ -1,0 +1,10 @@
+{
+  "NAV": {
+    "HOME": "Home",
+    "FOODS": "Foods",
+    "MEALS": "My meals",
+    "LOGIN": "Log in",
+    "LOGOUT": "Log out",
+    "GREETING": "Hi, {{name}}"
+  }
+}

@@ -1,17 +1,29 @@
 <mat-toolbar color="primary">
-  <a mat-button [routerLink]="''">Home</a>
-  <a mat-button [routerLink]="'/foods'">Alimentos</a>
+  <a mat-button routerLink="/">{{ 'NAV.HOME' | translate }}</a>
+  <a mat-button routerLink="/foods">{{ 'NAV.FOODS' | translate }}</a>
 
   @if (authService.estaLogueado()) {
-  <a mat-button [routerLink]="'/meals'">Mis comidas</a>
+    <a mat-button routerLink="/meals">{{ 'NAV.MEALS' | translate }}</a>
   }
 
   <span class="spacer"></span>
 
+  <mat-button-toggle-group
+    [value]="languageService.idioma()"
+    (change)="languageService.cambiar($event.value)"
+    aria-label="Idioma">
+    <mat-button-toggle value="es">ES</mat-button-toggle>
+    <mat-button-toggle value="en">EN</mat-button-toggle>
+  </mat-button-toggle-group>
+
   @if (authService.estaLogueado()) {
-  <a mat-button [routerLink]="'/perfil'">Hola, {{ authService.usuario()?.name }}</a>
-  <button mat-raised-button color="warn" (click)="authService.logout()">Cerrar sesión</button>
+    <a mat-button routerLink="/perfil">
+      {{ 'NAV.GREETING' | translate: { name: authService.usuario()?.name } }}
+    </a>
+    <button mat-raised-button color="warn" (click)="authService.logout()">
+      {{ 'NAV.LOGOUT' | translate }}
+    </button>
   } @else {
-  <a mat-button [routerLink]="'/login'">Iniciar sesión</a>
+    <a mat-button routerLink="/login">{{ 'NAV.LOGIN' | translate }}</a>
   }
 </mat-toolbar>

@@ -10,8 +10,8 @@ import { isPlatformBrowser } from '@angular/common';
 export class AuthService {
 
   private userService = inject(UserService);
-  private usuarioActual = signal<User | null>(this.leerUsuarioGuardado());
   private platformId = inject(PLATFORM_ID);
+  private usuarioActual = signal<User | null>(this.leerUsuarioGuardado());
 
   usuario = this.usuarioActual.asReadonly();
   estaLogueado = computed(() => this.usuarioActual() !== null);
