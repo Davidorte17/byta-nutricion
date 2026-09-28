@@ -1,0 +1,21 @@
+<mat-card class="login-card">
+  <h1>Iniciar sesión</h1>
+
+  <form (ngSubmit)="iniciarSesion()">
+    <mat-form-field appearance="outline">
+      <mat-label>Correo electrónico</mat-label>
+      <input matInput type="email" [(ngModel)]="mail" name="mail" placeholder="ejemplo@mail.com" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Contraseña</mat-label>
+      <input matInput type="password" [(ngModel)]="password" name="password" />
+    </mat-form-field>
+
+    @if (mensajeError) {
+      <p class="error">{{ mensajeError }}</p>
+    }
+
+    <button mat-raised-button color="primary" type="submit">Entrar</button>
+  </form>
+</mat-card>

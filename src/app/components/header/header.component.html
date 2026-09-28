@@ -1,0 +1,13 @@
+<mat-toolbar color="primary">
+  <a mat-button [routerLink]="''">Home</a>
+  <a mat-button [routerLink]="'/foods'">Alimentos</a>
+
+  <span class="spacer"></span>
+
+  @if (authService.estaLogueado()) {
+    <a mat-button [routerLink]="'/perfil'">Hola, {{ authService.usuario()?.name }}</a>
+    <button mat-raised-button color="warn" (click)="authService.logout()">Cerrar sesión</button>
+  } @else {
+    <a mat-button [routerLink]="'/login'">Iniciar sesión</a>
+  }
+</mat-toolbar>

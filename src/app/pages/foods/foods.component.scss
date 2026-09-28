@@ -1,0 +1,21 @@
+.foods-card {
+  max-width: 1000px;
+  margin: 32px auto;
+  padding: 24px 32px;
+}
+
+.filtros {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+table {
+  width: 100%;
+}
+
+.vacio {
+  text-align: center;
+  color: #777;
+  margin-top: 16px;
+}

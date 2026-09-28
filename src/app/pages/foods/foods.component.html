@@ -1,0 +1,68 @@
+<mat-card class="foods-card">
+  <h1>Alimentos</h1>
+
+  <div class="filtros">
+    <mat-form-field appearance="outline">
+      <mat-label>Buscar por nombre</mat-label>
+      <input matInput [(ngModel)]="filtroNombre" placeholder="Ej: Pollo" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Categoría</mat-label>
+      <mat-select [(ngModel)]="filtroCategoria">
+        <mat-option value="">Todas</mat-option>
+        <mat-option value="protein">Proteína</mat-option>
+        <mat-option value="carb">Carbohidrato</mat-option>
+        <mat-option value="fat">Grasa</mat-option>
+        <mat-option value="vegetable">Verdura</mat-option>
+        <mat-option value="fruit">Fruta</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  @if (loading) {
+    <mat-spinner diameter="40"></mat-spinner>
+  } @else {
+    <table mat-table [dataSource]="alimentosFiltrados()">
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Nombre</th>
+        <td mat-cell *matCellDef="let food">{{ food.name }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="category">
+        <th mat-header-cell *matHeaderCellDef>Categoría</th>
+        <td mat-cell *matCellDef="let food">
+          <mat-chip>{{ food.category }}</mat-chip>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="calories">
+        <th mat-header-cell *matHeaderCellDef>Calorías</th>
+        <td mat-cell *matCellDef="let food">{{ food.calories }} kcal</td>
+      </ng-container>
+
+      <ng-container matColumnDef="protein">
+        <th mat-header-cell *matHeaderCellDef>Proteína</th>
+        <td mat-cell *matCellDef="let food">{{ food.protein }} g</td>
+      </ng-container>
+
+      <ng-container matColumnDef="carbs">
+        <th mat-header-cell *matHeaderCellDef>Carbohidratos</th>
+        <td mat-cell *matCellDef="let food">{{ food.carbs }} g</td>
+      </ng-container>
+
+      <ng-container matColumnDef="fat">
+        <th mat-header-cell *matHeaderCellDef>Grasa</th>
+        <td mat-cell *matCellDef="let food">{{ food.fat }} g</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="columnas"></tr>
+      <tr mat-row *matRowDef="let row; columns: columnas"></tr>
+    </table>
+
+    @if (alimentosFiltrados().length === 0) {
+      <p class="vacio">No hay alimentos que coincidan con los filtros.</p>
+    }
+  }
+</mat-card>
