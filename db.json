@@ -4,21 +4,21 @@
       "id": "1",
       "name": "Juan",
       "email": "juan@mail.com",
-      "password": "Martinez1999.",
+      "password": "demo1234",
       "dailyCalorieGoal": 2200
     },
     {
       "id": "2",
       "name": "Ana",
       "email": "ana@mail.com",
-      "password": "Gamero2004.",
+      "password": "demo1234",
       "dailyCalorieGoal": 1900
     },
     {
       "id": "3",
       "name": "David",
       "email": "david@mail.com",
-      "password": "Ortega2003.",
+      "password": "demo1234",
       "dailyCalorieGoal": 2500
     }
   ],
